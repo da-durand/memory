@@ -1,5 +1,5 @@
 header, main{
-    width: 75%;
+    max-width: 1000px;
     margin: auto;
 }
 
@@ -10,14 +10,20 @@ header{
 ul{
     border: 2px black solid;
     padding: .2%;
+    background-color: bisque;
 }
 
 li{
-    width: 32.45%;
+    width: 32.72%;
     display: inline-block;
     text-align: center;
-    padding: 3rem 0;
+    padding: 13% 0;
     border-radius: 5px;
     border: 1px gray solid;
     margin: .2%;
+    background-color: lightgray;
+}
+
+.card{
+    color: lightgray;
 }
