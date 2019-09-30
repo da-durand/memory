@@ -26,4 +26,9 @@ li{
 
 .card{
     color: lightgray;
+    background-color: red;
+}
+
+.finish{
+    visibility: hidden;
 }

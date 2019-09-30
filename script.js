@@ -7,6 +7,9 @@ document.body.appendChild(mainElement);
 var ulElement = document.createElement("ul");
 mainElement.appendChild(ulElement);
 
+cardSelected1 = null;
+cardSelected2 = null;
+
 buttonInput.addEventListener("click", function () {
     
     ulElement.innerHTML = "";
@@ -41,11 +44,39 @@ buttonInput.addEventListener("click", function () {
         liElement.addEventListener("click", function () {
 
             if (this.classList.contains("card")) {
+            
+
                 this.classList.remove("card");
-            }
-            else {
-                this.className = "card";
+                
+                if (cardSelected1 == null){
+                    cardSelected1 = this;
+                }
+                else {
+                    cardSelected2 = this;
+
+                    if (cardSelected1.innerHTML == cardSelected2.innerHTML){
+                        
+                        cardSelected1.className = "finish";
+                        cardSelected2.className = "finish";
+                        
+                        cardSelected1 = null;
+                        cardSelected2 = null;
+
+                    }
+                    else{
+                        setTimeout(function(){
+                            
+                            cardSelected1.className = "card";
+                            cardSelected2.className = "card";  
+
+                            cardSelected1 = null;
+                            cardSelected2 = null;
+                        },1000);
+                    }
+
+                }
             }
         });
+        
     }
 });
