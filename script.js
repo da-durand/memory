@@ -56,16 +56,29 @@ buttonInput.addEventListener("click", function () {
 
                     if (cardSelected1.innerHTML == cardSelected2.innerHTML){
                         
-                        cardSelected1.className = "finish";
-                        cardSelected2.className = "finish";
-                        
-                        cardSelected1 = null;
-                        cardSelected2 = null;
+                        cardSelected1.className = "win";
+                        cardSelected2.className = "win";
+
+
+                        setTimeout(function(){
+                            cardSelected1.className = "finish";
+                            cardSelected2.className = "finish";
+                            
+                            cardSelected1 = null;
+                            cardSelected2 = null;                                                     
+                        },1000);
+
+
 
                     }
                     else{
+                        cardSelected1.classList.remove("card");
+                        cardSelected1.className = "loose";
+                        cardSelected2.className = "loose";
                         setTimeout(function(){
-                            
+                            cardSelected1.classList.remove("loose");
+                            cardSelected2.classList.remove("loose");
+
                             cardSelected1.className = "card";
                             cardSelected2.className = "card";  
 

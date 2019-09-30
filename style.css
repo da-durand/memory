@@ -26,9 +26,16 @@ li{
 
 .card{
     color: lightgray;
-    background-color: red;
 }
 
 .finish{
     visibility: hidden;
+}
+
+.win{
+    background-color: yellow;
+}
+
+.loose{
+    background-color: red;
 }
