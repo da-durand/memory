@@ -1,6 +1,10 @@
 var numberInput = document.getElementById("numb");
 var buttonInput = document.getElementsByTagName("button")[0];
 
+var headerElement = document.getElementsByTagName("header")[0];
+var cptElement = document.createElement("span");
+headerElement.appendChild(cptElement);
+
 var mainElement = document.createElement("main");
 document.body.appendChild(mainElement);
 
@@ -14,6 +18,9 @@ buttonInput.addEventListener("click", function () {
     
     ulElement.innerHTML = "";
     
+    cptPoint = 0;    
+    cptElement.innerHTML = cptPoint;
+
     nb = numberInput.value;
     var nbList = [];
     
@@ -38,15 +45,14 @@ buttonInput.addEventListener("click", function () {
 
         var liElement = document.createElement("li");
         ulElement.appendChild(liElement);
-        liElement.className = "card";
+        liElement.className = "hidden";
         liElement.innerHTML = nbList[i];
 
         liElement.addEventListener("click", function () {
 
-            if (this.classList.contains("card")) {
+            if (this.classList.contains("hidden")) {
             
-
-                this.classList.remove("card");
+                this.classList.remove("hidden");
                 
                 if (cardSelected1 == null){
                     cardSelected1 = this;
@@ -59,37 +65,38 @@ buttonInput.addEventListener("click", function () {
                         cardSelected1.className = "win";
                         cardSelected2.className = "win";
 
+                        cptPoint++;
+                        cptElement.innerHTML = cptPoint;
 
                         setTimeout(function(){
                             cardSelected1.className = "finish";
                             cardSelected2.className = "finish";
                             
                             cardSelected1 = null;
-                            cardSelected2 = null;                                                     
+                            cardSelected2 = null;    
+                            
+                            if (cptPoint == nb/2){
+                                alert("Félicitations ! T'es un boss !");
+                            }
                         },1000);
-
-
-
                     }
                     else{
-                        cardSelected1.classList.remove("card");
+                        cardSelected1.classList.remove("hidden");
                         cardSelected1.className = "loose";
                         cardSelected2.className = "loose";
                         setTimeout(function(){
                             cardSelected1.classList.remove("loose");
                             cardSelected2.classList.remove("loose");
 
-                            cardSelected1.className = "card";
-                            cardSelected2.className = "card";  
+                            cardSelected1.className = "hidden";
+                            cardSelected2.className = "hidden";  
 
                             cardSelected1 = null;
                             cardSelected2 = null;
                         },1000);
                     }
-
                 }
             }
-        });
-        
+        });     
     }
 });
